@@ -24,7 +24,12 @@ public class GameManager : MonoBehaviour {
 
         if (lifeScore < 0) {
 
-            if(GamePreferences.GetEasyDifficultyState() == 1) {
+            gameStartedFromMainMenu = false;
+            gameRestartedAfterPlayerDied = false;
+
+            GameplayController.instance.GameOverShowPanel(score, coinScore);
+
+            if (GamePreferences.GetEasyDifficultyState() == 1) {
 
                 int highScore = GamePreferences.GetEasyDifficultyHighscore();
                 int coinHighScore = GamePreferences.GetEasyDifficultyCoinScore();
@@ -62,10 +67,7 @@ public class GameManager : MonoBehaviour {
                     GamePreferences.SetHardDifficultyCoinScore(coinScore);
             }
 
-            gameStartedFromMainMenu = false;
-            gameRestartedAfterPlayerDied = false;
-
-            GameplayController.instance.GameOverShowPanel(score, coinScore);
+           
 
         } else {
 
@@ -73,10 +75,15 @@ public class GameManager : MonoBehaviour {
             this.coinScore = coinScore;
             this.lifeScore = lifeScore;
 
+            GameplayController.instance.SetScore(score);
+            GameplayController.instance.SetCoinScore(coinScore);
+            GameplayController.instance.SetLifeScore(lifeScore);
+
+
             gameStartedFromMainMenu = false;
             gameRestartedAfterPlayerDied = true;
 
-           // GameplayController.instance.gameRestartedAfterPlayerDied();
+            GameplayController.instance.PlayerDiedRestartTheGame ();
         }
     }
 
@@ -155,5 +162,6 @@ public class GameManager : MonoBehaviour {
         }
       
     }
+
 
 } // GameManager
