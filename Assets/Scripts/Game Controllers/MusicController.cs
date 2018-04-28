@@ -22,6 +22,8 @@ public class MusicController : MonoBehaviour {
         }
     }
 
+    // function to play music on/off
+    // depending on condition  
     public void PlayMusic(bool play) {
         if (play) {
             if(!audioSource.isPlaying) {
