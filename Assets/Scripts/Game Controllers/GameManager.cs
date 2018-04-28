@@ -20,14 +20,15 @@ public class GameManager : MonoBehaviour {
         InitializeVariables ();
     }
 
+   
     public void CheckGameStatus(int score, int coinScore, int lifeScore) {
 
         if (lifeScore < 0) {
 
-            gameStartedFromMainMenu = false;
-            gameRestartedAfterPlayerDied = false;
+           gameStartedFromMainMenu = false;
+           gameRestartedAfterPlayerDied = false;
 
-            GameplayController.instance.GameOverShowPanel(score, coinScore);
+           GameplayController.instance.GameOverShowPanel(score, coinScore);
 
             if (GamePreferences.GetEasyDifficultyState() == 1) {
 
@@ -79,15 +80,15 @@ public class GameManager : MonoBehaviour {
             GameplayController.instance.SetCoinScore(coinScore);
             GameplayController.instance.SetLifeScore(lifeScore);
 
-
             gameStartedFromMainMenu = false;
             gameRestartedAfterPlayerDied = true;
 
-            GameplayController.instance.PlayerDiedRestartTheGame ();
+            //
+
         }
     }
 
-    /*
+    
     void OnLevelWasLoaded()
     {
         if (Application.loadedLevelName == "Gameplay")
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    */
+    
 
     void InitializeVariables () {
 
