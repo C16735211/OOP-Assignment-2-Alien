@@ -17,6 +17,9 @@ public class CameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        // Set game difficulty speed relating to user score
+        // Three speeds Easy, Medium, Hard 
+
         if(GamePreferences.GetEasyDifficultyState () == 1) {
             maxSpeed = easySpeed;
         }
@@ -40,6 +43,8 @@ public class CameraScript : MonoBehaviour {
         }
 	}
 
+    // function to move camera with the gameplay canvas
+    // as player moves down screen 
     void MoveCamera () {
 
         Vector3 temp = transform.position;
