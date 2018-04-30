@@ -4,6 +4,10 @@ using System.Collections;
 public static class GamePreferences
 {
 
+    // Allows the settings for the difficulty level 
+    // which can be easy - medium or difficult
+    // as well as music on
+
     public static string EasyDifficulty = "EasyDifficulty";
     public static string MediumDifficulty = "MediumDifficulty";
     public static string HardDifficulty = "HardDifficulty";
