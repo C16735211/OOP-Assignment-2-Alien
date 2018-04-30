@@ -16,6 +16,6 @@ The game was built in Unity 5.4.2(version) using C# scripts connected to gameobj
 
 #### Project 
 
-The game was an individual project, I was lookin to gain the experience of creating a 2d game and done some research into the best available technology. It was something I never done before and would be a really big challenge. I decided to do it in Unity which was an overall enjoyable experience with many hours of frustration involved. I followed tutorials on youtube as well as a course on Udemy. I found that after getting familiar with the Unity interface and studying how to import my assets, how to create and connect scripts to gameobjects I planned out the type of game I wanted to build. Basic 2D platform game collecting coins and lives and to learn how to use the different technologies in Unity.
+The game was an individual project, I was lookin to gain experience of creating a 2d game and done research into the best available technology. It was something I never done before and would be a really big challenge. I decided to do it in Unity which was an overall enjoyable experience with many hours of frustration involved. I followed tutorials on youtube as well as a course on Udemy. I found that after getting familiar with the Unity interface and studying how to import assets, how to create and connect scripts to gameobjects, I planned out the type of game I wanted to build. Basic 2D platform game collecting coins and lives and to learn how to use the different technologies in Unity.
 
 https://www.youtube.com/watch?v=dhjN28d4DsU
