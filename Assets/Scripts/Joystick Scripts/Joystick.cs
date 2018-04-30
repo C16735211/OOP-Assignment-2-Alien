@@ -4,22 +4,21 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
 
+    private PlayerMoveJoystick playerMove;
+
+    void Start() {
+        playerMove = GameObject.Find("Player").GetComponent<PlayerMoveJoystick> ();
+    }
+
     public void OnPointerDown(PointerEventData data) {
         if (gameObject.name == "Left") {
-            
+            playerMove.SetMoveLeft(true);
         } else {
-           
+            playerMove.SetMoveLeft(false);
         }
     }
 
     public void OnPointerUp(PointerEventData data) {
-        if (gameObject.name == "Left")
-        {
-            Debug.Log("Released The Left Button");
-        }
-        else
-        {
-            Debug.Log("Released The Right Button");
-        }
+        playerMove.StopMoving ();
     }
 } // Joystick

@@ -29,11 +29,12 @@ public class PlayerMoveJoystick : MonoBehaviour {
     // this refers to the class PlayerMoveJoystick.moveLeft = moveLeft;
     public void SetMoveLeft(bool moveLeft) {
         this.moveLeft = moveLeft;
+        this.moveRight = !moveLeft;
     }
 
-    public void SetMoveRight(bool moveRight)
-    {
-        this.moveRight = moveRight;
+    public void StopMoving () {
+        moveLeft = moveRight = false;
+        anim.SetBool("Walk", false);
     }
 
     void MoveLeft() {
