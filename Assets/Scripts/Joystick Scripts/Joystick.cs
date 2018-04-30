@@ -7,7 +7,7 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
     private PlayerMoveJoystick playerMove;
 
     void Start() {
-        playerMove = GameObject.Find("Player").GetComponent<PlayerMoveJoystick> ();
+        playerMove = GameObject.Find ("Player").GetComponent<PlayerMoveJoystick> ();
     }
 
     public void OnPointerDown(PointerEventData data) {
@@ -21,4 +21,5 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
     public void OnPointerUp(PointerEventData data) {
         playerMove.StopMoving ();
     }
+
 } // Joystick

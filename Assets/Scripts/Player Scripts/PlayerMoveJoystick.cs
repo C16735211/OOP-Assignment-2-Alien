@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerMoveJoystick : MonoBehaviour {
 
     public float speed = 8f, maxVelocity = 4f;
-
     private Rigidbody2D myBody;
     private Animator anim;
     private bool moveLeft, moveRight;
@@ -34,7 +33,7 @@ public class PlayerMoveJoystick : MonoBehaviour {
 
     public void StopMoving () {
         moveLeft = moveRight = false;
-        anim.SetBool("Walk", false);
+        anim.SetBool ("Walk", false);
     }
 
     void MoveLeft() {
