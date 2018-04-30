@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class Joystick : MonoBehaviour {
+public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-}
+    public void OnPointerDown(PointerEventData data) {
+        if (gameObject.name == "Left") {
+            
+        } else {
+           
+        }
+    }
+
+    public void OnPointerUp(PointerEventData data) {
+        if (gameObject.name == "Left")
+        {
+            Debug.Log("Released The Left Button");
+        }
+        else
+        {
+            Debug.Log("Released The Right Button");
+        }
+    }
+} // Joystick
