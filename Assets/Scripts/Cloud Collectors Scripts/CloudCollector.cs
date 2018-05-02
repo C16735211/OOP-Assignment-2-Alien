@@ -3,10 +3,13 @@ using System.Collections;
 
 public class CloudCollector : MonoBehaviour {
 
-    // function to collect the clouds when it collides as it goes down screen
+    // Function gets called when objects collide or touch
+    // Triggers when another gameobject collides or touches our cloud collector
+ 
      void OnTriggerEnter2D(Collider2D target) {
         if(target.tag == "Cloud" || target.tag == "Deadly")
         {
+            // deactivate gameobject in the scene
             target.gameObject.SetActive(false);
         }
     }

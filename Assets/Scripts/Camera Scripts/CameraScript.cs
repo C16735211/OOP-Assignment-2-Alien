@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour {
 
+    // variables for camera speed
     private float speed = 1.0f;
     private float acceleration = 0.2f;
     private float maxSpeed = 3.2f;
@@ -53,6 +54,9 @@ public class CameraScript : MonoBehaviour {
 
         float newY = temp.y - (speed * Time.deltaTime);
 
+        // Mathf.Clamp function assigns a value between the variables
+        // will not allow it to go below or above thr values and reassigns
+        // the camera to the temp position
         temp.y = Mathf.Clamp(temp.y, oldY, newY);
 
         transform.position = temp;
@@ -60,6 +64,7 @@ public class CameraScript : MonoBehaviour {
         speed += acceleration * Time.deltaTime;
 
         // control the speed
+        // of the camera over time
         if (speed > maxSpeed)
             speed = maxSpeed;
 
