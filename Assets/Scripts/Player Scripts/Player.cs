@@ -44,11 +44,12 @@ public class Player : MonoBehaviour {
             if (vel < maxVelocity)
                 forceX = speed;
 
-            // makes the player turn left 
+            // makes reference to the player facing right 
             Vector3 temp = transform.localScale;
             temp.x = 0.6f;
             transform.localScale = temp;
 
+            // walk parameter set to true 
             anim.SetBool("Walk", true);
 
             // go to left
@@ -57,12 +58,15 @@ public class Player : MonoBehaviour {
             if (vel < maxVelocity)
                 forceX = -speed;
 
+            // makes reference to player turning and facing left
             Vector3 temp = transform.localScale;
             temp.x = -0.6f;
             transform.localScale = temp;
 
+            // walk parameter set walk to be true
             anim.SetBool("Walk", true);
         } else {
+            // else idle, stop walking
             anim.SetBool("Walk", false);
         }
 

@@ -141,12 +141,15 @@ public class CloudSpawner : MonoBehaviour {
 
     }
 
+    // Respawn new clouds when we hit the last cloud position
     void OnTriggerEnter2D(Collider2D target) {
 
         if(target.tag == "Cloud" || target.tag == "Deadly") {
 
             if(target.transform.position.y == lastCloudPositionY) {
 
+                // shuffle position and randomize
+                // clouds and collectables
                 Shuffle(clouds);
                 Shuffle(collectables);
 
@@ -154,6 +157,7 @@ public class CloudSpawner : MonoBehaviour {
 
                 for(int i = 0; i < clouds.Length; i++) {
 
+                    // if element at index[i] in the hierarchy not active
                     if(!clouds[i].activeInHierarchy) {
 
                         if (controlX == 0)
@@ -179,8 +183,11 @@ public class CloudSpawner : MonoBehaviour {
 
                         temp.y -= distanceBetweenClouds;
 
+                        // last cloud in the games position
+                        // clouds respawn when touched
                         lastCloudPositionY = temp.y;
 
+                        // set and activate new respawned clouds
                         clouds[i].transform.position = temp;
                         clouds[i].SetActive(true);
 

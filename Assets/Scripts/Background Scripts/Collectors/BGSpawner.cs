@@ -12,17 +12,21 @@ public class BGSpawner : MonoBehaviour {
         GetBackgroundsAndSetLastY();
 	}
 
+    // find gameobjects background and reposition after detecting last background
     void GetBackgroundsAndSetLastY () {
         backgrounds = GameObject.FindGameObjectsWithTag ("Background");
 
         lastY = backgrounds[0].transform.position.y;
 
+        // get lastY position of the backgrounds
         for(int i = 1; i < backgrounds.Length; i++) {
             if (lastY > backgrounds[i].transform.position.y)
                 lastY = backgrounds[i].transform.position.y;
         }
     }
 
+    // function to respawn backgrounds when last background
+    // position is detected 
     void OnTriggerEnter2D(Collider2D target) {
         
         if(target.tag == "Background") {
@@ -30,6 +34,8 @@ public class BGSpawner : MonoBehaviour {
                 Vector3 temp = target.transform.position;
                 float height = ((BoxCollider2D)target).size.y;
 
+                // if backgrounds are not active in the hierarchy
+                // reassign lastY = temp and respawn new backgrounds
                 for(int i = 0; i < backgrounds.Length; i++) {
                     if(!backgrounds[i].activeInHierarchy) {
 
