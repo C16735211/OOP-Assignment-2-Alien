@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CloudSpawner : MonoBehaviour {
 
-    [SerializeField]
+    // other classes cannot access the variable/gameobject
+    [SerializeField] 
     private GameObject[] clouds;
 
     private float distanceBetweenClouds = 3f;
@@ -34,15 +35,20 @@ public class CloudSpawner : MonoBehaviour {
         PositionThePlayer();
     }
 
+    // World position in the scene in unity
+    // Screen coordinates converted into world coordinates in Unity
+  
     void SetMinAndMax () {
         Vector3 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
+        // position clouds inside the width of screen/
+        // background on both sides
         maxX = bounds.x - 0.5f;
         minX = -bounds.x + 0.5f;
     }
 
     // Function to shuffle a random collection of gameobjects that move position
-
+    // randomise positions every new game
     void Shuffle(GameObject[] arrayToShuffle) {
         for(int i = 0; i < arrayToShuffle.Length; i++) {
             GameObject temp = arrayToShuffle[i];
@@ -52,18 +58,23 @@ public class CloudSpawner : MonoBehaviour {
         }
     }
 
+    // position clouds in the game
     void CreateClouds() {
 
         Shuffle(clouds);
 
         float positionY = 0f;
 
+        // 
         for (int i = 0; i < clouds.Length; i++) {
 
+            // position of cloud at element [i]
             Vector3 temp = clouds[i].transform.position;
 
+            // last position in cloud[i] on y axis
             temp.y = positionY;
 
+            // position the clouds on the x axis
             if (controlX == 0) {
                 temp.x = Random.Range(0.0f, maxX);
                 controlX = 1;
@@ -87,8 +98,10 @@ public class CloudSpawner : MonoBehaviour {
         }
     }
 
+    // 
     void PositionThePlayer () {
 
+        // Get the reference to all our clouds in the game : Tags 
         GameObject[] darkClouds = GameObject.FindGameObjectsWithTag("Deadly");
         GameObject[] cloudsInGame = GameObject.FindGameObjectsWithTag("Cloud");
 
@@ -99,6 +112,8 @@ public class CloudSpawner : MonoBehaviour {
 
                 Vector3 t = darkClouds[i].transform.position;
 
+                // how the player doesn't face having dark cloud(s) when starting the game
+                // reposition dark clouds in a suitable position in the scene
                 darkClouds[i].transform.position = new Vector3(cloudsInGame[0].transform.position.x,
                                                                cloudsInGame[0].transform.position.y,
                                                                cloudsInGame[0].transform.position.z);
@@ -108,8 +123,10 @@ public class CloudSpawner : MonoBehaviour {
             }
         }
 
+        // Position player at the start on a white cloud
         Vector3 temp = cloudsInGame[0].transform.position;
 
+        // comparing player position and reassign player to first cloud position
         for (int i = 1; i < cloudsInGame.Length; i++)
         {
             if (temp.y < cloudsInGame[i].transform.position.y) {
@@ -117,6 +134,7 @@ public class CloudSpawner : MonoBehaviour {
             }
         }
 
+        // position player on the  first cloud every time
         temp.y += 0.8f;
 
         player.transform.position = temp;
